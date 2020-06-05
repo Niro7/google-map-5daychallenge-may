@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPIC Google Maps Project</title>
+    <link rel="stylesheet" href="style/style.css">
+    <script src="/path/to/markerwithlabel.js" type="text/javascript"></script>
+    <script src="https://kit.fontawesome.com/c939d0e917.js" ></script>
+    <script src="js/map-style.js"></script>
+    <script src="js/store-data.js"></script>
+</head>
+<body>
+    <div class="title">Store Locator</div>
+        <div class="search-container">
+        <div class="search">
+                <input id="zipcode-input" type="text" placeholder="Enter ZIP"/>
+                <i id="search-btn"class="fas fa-search" onclick=" searchStore()" ></i>
+        </div>
+    </div>
+    
+    <div class="stores-list-container">
+        <div class="stores-list">
+        </div>
+    </div>
+    <div id="map"></div>
+    <script src="js/index.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
+    async defer></script>
+</body>
+</html>

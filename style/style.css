@@ -1,0 +1,213 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+#map{
+    height: 100vh;
+}
+.title{
+    position: absolute; /*Postion it according to top, bottom, left, right values*/
+    top: 50px;
+    left: 50px;
+    font-size:60px;
+    font-weight: bold;
+    z-index:30; /*Used to show importance in it's position*/
+    text-transform: uppercase;
+    color: rgb(80, 138, 204);
+    text-shadow: 7px 5px 7px rgb(19, 37, 70), 7px 10px 10px rgb(3, 26, 70);
+    /* background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 5px; */
+    /* background: linear-gradient(-30deg, #1ec4e9 0%, #673ab7 50%, #262626 50%, #607d8b 100%);  */
+    /* Two shades to get glassy in following */
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(255, 255, 255,.1);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    padding: 5px 25px;
+}
+.title::before
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255,.1);
+}
+.title::after
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255,.2), transparent);
+    transition: 0.5s;
+}
+
+/* @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+    .title {
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      background-color: rgba(255, 255, 255, 0.5);  
+    }
+  } */
+.search-container{
+    width: 380px;
+    height: 45px;
+    background-color: rgb(27, 112, 158);
+    z-index: 30;
+    position: absolute;
+    left: 50px;
+    top: 150px;
+    border-radius: 30px;
+    border: 1.5px solid rgb(7, 50, 71);
+}
+.search{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: inherit;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.search input{
+    width: 100%;
+    background: none;
+    border: none;
+    color: white;
+    outline: none;
+}
+.search input:focus{
+    background: none;
+    outline: none;
+}
+.search input::placeholder{
+    color: rgb(91, 127, 175);
+}
+.search i{
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+.stores-list-container{
+    width: 350px;
+    position: absolute;
+    z-index: 30;
+    top: 220px;
+    left: 50px;
+    border-radius: 30px;
+    bottom: 20px;
+    background-color: rgba(19, 99, 219, 0.8);
+    padding: 15px;
+}
+.stores-list {
+    padding-left: 10px;
+    padding-right: 10px;
+    overflow-y: overlay;
+    height: 100%;
+}
+.store-container{
+    padding: 5px 10px;
+    border-bottom: 1px solid #077;
+    background-color: rgba(242, 242, 242, .4);
+    border-radius: 15px;
+    display: flex;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+.store-container:hover{
+    background: linear-gradient(90deg, rgba(2,162,222,.4) 41%, rgba(11,26,75,.4) 87%);
+    border: .5px rgb(50, 89, 218) solid;
+    /* transition: all 0.2s ease-in-out; */
+}
+.store-info-container{
+    flex-direction: column;
+    flex-grow: 1;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+.store-address{
+    display: flex;
+    flex-direction: column;
+    color: rgb(59, 59, 85);
+    margin-top: 10px;
+}
+.store-phone-number{
+    font-size: 14px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    color: #5a5466;
+}
+.store-number-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+.store-number{
+    background: rgb(2,0,36);
+    background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 25%, rgba(0,212,255,1) 100%);
+    border-radius: 50%;
+    padding: 6px;
+    text-align: center;
+    color: white;
+    border: .5px solid rgb(11, 24, 87);
+    font-size: 10px;
+    font-weight: bold;
+}
+.stores-list::-webkit-scrollbar {
+    width: 10px;
+}
+.stores-list::-webkit-scrollbar-thumb {
+    background: transparent;
+    background-color: #21fde5;
+    background-image: linear-gradient(19deg, #21fde5 0%, #5d21ff 100%);
+    outline: 1px solid rgb(38, 48, 136);
+    border-radius: 10px;
+}
+.store-info-window{
+    background: rgba(2,162,222,.3);
+    padding: 10px;
+    border-radius: 10px;
+}
+.store-info-name{
+    font-weight: 550;
+    font-size: 14px;
+    color: #333;
+}
+.store-info-address a{
+    text-decoration: none;
+    color: rgb(23, 65, 121);
+}
+.store-info-address a:hover{
+    color: rgb(32, 141, 32);
+}
+.store-info-window i{
+    padding: 7px;
+    margin-right: 5px;
+    background: #4ea2ca;
+    border-radius: 50%;
+    color: white;
+}
+.store-info-address, .store-info-phone{
+    margin: 4px;
+    font-size: 12px;
+    color: rgb(41, 41, 46);
+}
+.store-info-status{
+    font-size: 11px;
+    color: #7d7676;
+    margin-bottom: 7px;
+}
+.initialize-store{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+}
